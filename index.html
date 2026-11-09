@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Диас — сайты на заказ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Делаю быстрые сайты на заказ: лендинги, сайты-визитки, онлайн-запись. Астана, работаю удалённо.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one narrow reading column; projects shown as live-looking browser frames with real page metrics */
+:root{
+  --bg:#f3f5f8; --surface:#ffffff; --ink:#111827; --muted:#5b6474; --line:#dde2ea;
+  --accent:#2448d6; --accent-ink:#ffffff; --good:#0b7a54; --warn:#9a5b00;
+  --f-display:"Unbounded", "Arial Black", system-ui, sans-serif;
+  --f-body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1117; --surface:#151b24; --ink:#e8ecf2; --muted:#9aa4b4; --line:#263040;
+    --accent:#7d98ff; --accent-ink:#0d1117; --good:#3fcf95; --warn:#f0b04a; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1117; --surface:#151b24; --ink:#e8ecf2; --muted:#9aa4b4; --line:#263040;
+  --accent:#7d98ff; --accent-ink:#0d1117; --good:#3fcf95; --warn:#f0b04a; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.15;margin:0}
+h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:700}
+h3{font-size:1.05rem;font-weight:500}
+.label{font:600 .75rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+section{padding-block:72px;border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:10px;margin-bottom:32px;max-width:640px}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{font:700 1rem var(--f-display);color:var(--ink);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+.nav ul a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem}
+.nav ul a:hover{color:var(--ink)}
+@media (max-width:720px){.nav ul{display:none}}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:12px 20px;font:700 .95rem var(--f-body);text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+
+/* hero */
+.hero{padding-block:72px 64px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+@media (max-width:880px){.hero{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(2rem,5.2vw,3.6rem);font-weight:700;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{font-size:1.15rem;max-width:34ch;color:var(--muted);margin:20px 0 28px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.audit{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;font-family:var(--f-mono);font-size:.85rem;min-width:0}
+.audit .row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.audit .row:last-child{border-bottom:0}
+.score{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;border:3px solid var(--good);color:var(--good);font-weight:600}
+.scores{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 18px}
+.scores div{display:grid;justify-items:center;gap:6px;font-size:.7rem;color:var(--muted)}
+.ok{color:var(--good)}
+
+/* services */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:880px){.plans{grid-template-columns:1fr}}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;grid-template-rows:auto auto 1fr auto;gap:14px;min-width:0}
+.plan.main{border:2px solid var(--accent)}
+.price{font:700 1.6rem var(--f-display);font-variant-numeric:tabular-nums}
+.price small{font:500 .85rem var(--f-body);color:var(--muted)}
+.plan ul{margin:0;padding-left:18px;color:var(--muted)}
+.plan ul li{margin:4px 0}
+.plan .meta{font:400 .8rem var(--f-mono);color:var(--muted)}
+
+/* projects */
+.projects{display:grid;gap:40px}
+.proj{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+@media (max-width:880px){.proj{grid-template-columns:1fr}}
+.browser{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface);max-width:100%}
+.bar{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line);font:400 .75rem var(--f-mono);color:var(--muted)}
+.bar i{width:10px;height:10px;border-radius:50%;background:var(--line);display:block}
+.bar span{margin-left:10px;background:var(--bg);border-radius:6px;padding:3px 10px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.screen{aspect-ratio:16/10;max-width:100%;position:relative;overflow:hidden}
+.tag{display:inline-block;justify-self:start;font:600 .7rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:4px;border:1px solid var(--line);color:var(--muted)}
+.tag.real{border-color:var(--good);color:var(--good)}
+.proj-info{display:grid;gap:12px;min-width:0}
+.stack{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.stack li{font:400 .78rem var(--f-mono);background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:3px 8px}
+
+/* mock screens (pure CSS, fixed palettes per fictional/real project) */
+.m-barber{background:#18130f;color:#efe6d8;padding:7%;display:grid;grid-template-columns:1fr 1fr;gap:6%;font-family:var(--f-body)}
+.m-barber b{font:700 clamp(.8rem,2.2vw,1.3rem) var(--f-display);color:#e9b872;display:block;margin-bottom:6px}
+.m-barber p{font-size:clamp(.55rem,1.2vw,.75rem);margin:0;opacity:.75}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;align-content:start}
+.slots div{border:1px solid #4a3d30;border-radius:4px;font:400 clamp(.5rem,1.1vw,.7rem) var(--f-mono);text-align:center;padding:5px 0}
+.slots .on{background:#e9b872;color:#18130f;border-color:#e9b872}
+.slots .off{opacity:.3;text-decoration:line-through}
+.m-coffee{background:#e8efe6;color:#1d3524;padding:7%;display:grid;gap:8%;font-family:var(--f-body)}
+.m-coffee b{font:700 clamp(.9rem,2.6vw,1.6rem) var(--f-display);display:block;max-width:12ch}
+.cups{display:grid;grid-template-columns:repeat(3,1fr);gap:6%}
+.cups div{background:#fff;border-radius:6px;padding:8%;font-size:clamp(.5rem,1.1vw,.72rem)}
+.cups div::before{content:"";display:block;aspect-ratio:1;border-radius:50%;background:#c9d8c5;margin-bottom:8px}
+.m-photo{background:#f4f4f2;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:4px;padding:4px}
+.m-photo div{background:linear-gradient(135deg,#a9b4c2,#59657a)}
+.m-photo div:nth-child(2){background:linear-gradient(135deg,#d6c3a5,#8f7458);grid-row:span 2}
+.m-photo div:nth-child(4){background:linear-gradient(135deg,#bcd0c7,#4f6e64)}
+.m-photo div:nth-child(5){grid-column:span 2;background:linear-gradient(135deg,#2b2f38,#6b7383)}
+.m-photo div:nth-child(7){background:linear-gradient(135deg,#e2b9a8,#9a5b47)}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s;list-style:none;margin:0;padding:0}
+@media (max-width:880px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+.steps li{counter-increment:s;display:grid;gap:8px;align-content:start;padding-top:16px;border-top:2px solid var(--ink)}
+.steps li::before{content:"шаг " counter(s);font:600 .75rem var(--f-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.08em}
+.steps p{margin:0;color:var(--muted);font-size:.95rem}
+.steps .days{font:400 .8rem var(--f-mono);color:var(--muted)}
+
+/* about + skills */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media (max-width:880px){.about{grid-template-columns:1fr}}
+.about p{margin:0 0 14px;max-width:60ch}
+.skills{display:grid;gap:10px;font-family:var(--f-mono);font-size:.88rem}
+.skills div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+
+/* contact */
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px}
+@media (max-width:880px){.contact{grid-template-columns:1fr}}
+form{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+label{display:grid;gap:6px;font-weight:500;font-size:.92rem}
+input,textarea,select{font:400 1rem var(--f-body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:11px 12px;width:100%}
+textarea{min-height:110px;resize:vertical}
+.form-note{font-size:.9rem;min-height:1.4em}
+.form-note.ok{color:var(--good)} .form-note.err{color:var(--warn)}
+.links{display:grid;gap:12px;margin-top:20px}
+.links div{display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:10px;font-family:var(--f-mono);font-size:.9rem;flex-wrap:wrap}
+.copy{background:none;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:4px 10px;font:500 .8rem var(--f-body);cursor:pointer}
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap nav">
+    <a class="logo" href="#top">Диас<span>.</span>dev</a>
+    <ul>
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#work">Работы</a></li>
+      <li><a href="#process">Как работаю</a></li>
+      <li><a href="#about">Обо мне</a></li>
+    </ul>
+    <a class="btn" href="#contact">Обсудить проект</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <span class="label">Веб-разработчик · Астана · удалённо</span>
+      <h1 style="margin-top:14px">Сайты, которые открываются <em>за секунду</em> и приводят клиентов</h1>
+      <p>Делаю лендинги, сайты-визитки и онлайн-запись для малого бизнеса. Адаптив под телефон, понятная цена, сдаю за 1–3 недели.</p>
+      <div class="ctas">
+        <a class="btn" href="#contact">Получить оценку бесплатно</a>
+        <a class="btn ghost" href="#work">Смотреть работы</a>
+      </div>
+    </div>
+    <div class="audit" role="group" aria-label="Показатели этого сайта">
+      <div class="label">Цель для каждого сайта · Lighthouse</div>
+      <div class="scores">
+        <div><span class="score">98</span>Скорость</div>
+        <div><span class="score">100</span>Доступность</div>
+        <div><span class="score">100</span>Практики</div>
+        <div><span class="score">100</span>SEO</div>
+      </div>
+      <div class="row"><span>Вес страницы</span><span>~25 КБ</span></div>
+      <div class="row"><span>Фреймворки</span><span>0</span></div>
+      <div class="row"><span>Мобильная версия</span><span class="ok">да</span></div>
+      <div class="row"><span>Хостинг</span><span>0 ₸ / мес</span></div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Услуги и цены</span>
+        <h2>Три формата под разные задачи</h2>
+        <p class="muted">Цена фиксируется до старта. Домен и хостинг помогаю подключить, на бесплатном хостинге сайт обходится в 0 ₸ в месяц.</p>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <h3>Лендинг</h3>
+          <div class="price">от 80 000 <small>₸</small></div>
+          <ul>
+            <li>Одна страница под одну услугу или акцию</li>
+            <li>Форма заявки в Telegram или на почту</li>
+            <li>Адаптив под телефон</li>
+          </ul>
+          <div class="meta">срок: 5–7 дней</div>
+        </article>
+        <article class="plan main">
+          <h3>Сайт-визитка</h3>
+          <div class="price">от 150 000 <small>₸</small></div>
+          <ul>
+            <li>До 5 страниц: услуги, цены, отзывы, контакты</li>
+            <li>Карта 2ГИС и кнопки WhatsApp / Telegram</li>
+            <li>Базовая SEO-настройка</li>
+          </ul>
+          <div class="meta">срок: 1–2 недели</div>
+        </article>
+        <article class="plan">
+          <h3>Онлайн-запись</h3>
+          <div class="price">от 250 000 <small>₸</small></div>
+          <ul>
+            <li>Клиент сам выбирает мастера и время</li>
+            <li>Панель для администратора</li>
+            <li>Уведомления о новой записи</li>
+          </ul>
+          <div class="meta">срок: 2–3 недели</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Работы</span>
+        <h2>Проекты</h2>
+        <p class="muted">Учебный проект с командой и концепты, сделанные для портфолио. Метка на каждом проекте говорит, что это за работа.</p>
+      </div>
+      <div class="projects">
+
+        <article class="proj">
+          <div class="browser">
+            <div class="bar"><i></i><i></i><i></i><span>barbershop-booking · демо</span></div>
+            <div class="screen m-barber">
+              <div><b>Запись к мастеру</b><p>Выберите мастера, услугу и свободное время. Подтверждение придёт сразу.</p></div>
+              <div class="slots">
+                <div class="off">10:00</div><div>11:00</div><div class="on">12:00</div>
+                <div>13:30</div><div class="off">15:00</div><div>16:00</div>
+                <div>17:30</div><div>18:00</div><div class="off">19:00</div>
+              </div>
+            </div>
+          </div>
+          <div class="proj-info">
+            <span class="tag real">Учебный командный проект</span>
+            <h3>Онлайн-запись в барбершоп</h3>
+            <p class="muted" style="margin:0">Сервис, где клиент выбирает мастера и свободный слот, а администратор видит расписание. Проект курса ICT, командная разработка.</p>
+            <ul class="stack"><li>React</li><li>Tailwind</li><li>Node.js / Express</li><li>PostgreSQL</li><li>Redis</li></ul>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="browser">
+            <div class="bar"><i></i><i></i><i></i><span>coffee-concept · демо</span></div>
+            <div class="screen m-coffee">
+              <b>Кофе с собой за 3 минуты</b>
+              <div class="cups"><div>Флэт уайт<br>1 400 ₸</div><div>Раф<br>1 600 ₸</div><div>Матча<br>1 800 ₸</div></div>
+            </div>
+          </div>
+          <div class="proj-info">
+            <span class="tag">Концепт</span>
+            <h3>Лендинг кофейни</h3>
+            <p class="muted" style="margin:0">Одностраничник с меню, ценами и кнопкой заказа навынос. Показывает, как выглядит формат «Лендинг».</p>
+            <ul class="stack"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="browser">
+            <div class="bar"><i></i><i></i><i></i><span>photographer-concept · демо</span></div>
+            <div class="screen m-photo"><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          </div>
+          <div class="proj-info">
+            <span class="tag">Концепт</span>
+            <h3>Портфолио фотографа</h3>
+            <p class="muted" style="margin:0">Галерея-сетка с быстрой загрузкой фото и страницей бронирования съёмки.</p>
+            <ul class="stack"><li>HTML</li><li>CSS Grid</li><li>Lazy loading</li></ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Как работаю</span>
+        <h2>От заявки до запуска</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Созвон</h3><p>Обсуждаем задачу, примеры, бюджет. Называю точную цену.</p><span class="days">1 день</span></li>
+        <li><h3>Макет</h3><p>Показываю дизайн главной страницы, вносим правки.</p><span class="days">2–4 дня</span></li>
+        <li><h3>Вёрстка</h3><p>Собираю сайт, проверяю на телефоне и компьютере.</p><span class="days">3–10 дней</span></li>
+        <li><h3>Запуск</h3><p>Подключаю домен, передаю доступы, 14 дней бесплатных правок.</p><span class="days">1 день</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <span class="label">Обо мне</span>
+        <h2 style="margin:10px 0 18px">Привет, я Диас</h2>
+        <p>Студент направления Software Engineering. Делаю сайты для малого бизнеса: барбершопов, кофеен, студий и частных специалистов.</p>
+        <p>Пишу чистый код без лишних конструкторов, поэтому сайты быстрые и их легко дорабатывать. Общаюсь на русском и казахском.</p>
+      </div>
+      <div class="skills" role="group" aria-label="Навыки">
+        <span class="label">Навыки</span>
+        <div><span>HTML / CSS / адаптив</span><span>каждый проект</span></div>
+        <div><span>JavaScript</span><span>интерактив, формы</span></div>
+        <div><span>React + Tailwind</span><span>сложные интерфейсы</span></div>
+        <div><span>Node.js / Express</span><span>бэкенд, API</span></div>
+        <div><span>PostgreSQL</span><span>базы данных</span></div>
+        <div><span>Git / GitHub</span><span>каждый проект</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <span class="label">Контакты</span>
+        <h2 style="margin:10px 0 14px">Расскажите о проекте</h2>
+        <p class="muted">Отвечу в течение дня и назову цену. Консультация бесплатная.</p>
+        <div class="links">
+          <div><span>Telegram</span><span id="tg">@your_username</span><button class="copy" type="button" data-copy="tg">Копировать</button></div>
+          <div><span>WhatsApp</span><span id="wa">+7 700 000 00 00</span><button class="copy" type="button" data-copy="wa">Копировать</button></div>
+          <div><span>Email</span><span id="em">you@example.com</span><button class="copy" type="button" data-copy="em">Копировать</button></div>
+        </div>
+      </div>
+      <form id="lead" novalidate>
+        <label for="f-name">Имя<input id="f-name" name="name" autocomplete="name" required placeholder="Айгерим"></label>
+        <label for="f-contact">Telegram или телефон<input id="f-contact" name="contact" required placeholder="@aigerim или +7 7…"></label>
+        <label for="f-type">Что нужно
+          <select id="f-type" name="type">
+            <option>Лендинг</option><option selected>Сайт-визитка</option><option>Онлайн-запись</option><option>Пока не знаю</option>
+          </select>
+        </label>
+        <label for="f-msg">Пара слов о бизнесе<textarea id="f-msg" name="message" placeholder="Барбершоп в Астане, нужна запись онлайн"></textarea></label>
+        <button class="btn" type="submit">Отправить заявку</button>
+        <p class="form-note" id="note" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© <span id="y">2026</span> Диас · Сайт сделан вручную, без конструкторов</div></footer>
+
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click', function(){
+    var el = document.getElementById(b.dataset.copy), t = el.textContent;
+    var done = function(){ b.textContent = 'Скопировано'; setTimeout(function(){ b.textContent = 'Копировать'; }, 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(done, function(){ selectText(el); });
+    } else { selectText(el); }
+  });
+});
+function selectText(el){ var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+
+/* Заявка: укажите ссылку Formspree (бесплатно) в FORM_ENDPOINT, чтобы заявки приходили на почту */
+var FORM_ENDPOINT = '';
+document.getElementById('lead').addEventListener('submit', function(e){
+  e.preventDefault();
+  var f = e.target, note = document.getElementById('note');
+  if (!f.elements['name'].value.trim() || !f.elements['contact'].value.trim()) {
+    note.className = 'form-note err'; note.textContent = 'Заполните имя и контакт, чтобы я мог ответить.'; return;
+  }
+  if (!FORM_ENDPOINT) {
+    note.className = 'form-note err'; note.textContent = 'Форма ещё не подключена. Напишите в Telegram, контакты рядом с формой.'; return;
+  }
+  fetch(FORM_ENDPOINT, {method:'POST', body:new FormData(f), headers:{Accept:'application/json'}})
+    .then(function(r){ if(!r.ok) throw 0; f.reset(); note.className='form-note ok'; note.textContent='Заявка отправлена. Отвечу в течение дня.'; })
+    .catch(function(){ note.className='form-note err'; note.textContent='Не получилось отправить. Напишите в Telegram.'; });
+});
+</script>
+</body>
+</html>
