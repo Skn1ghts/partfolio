@@ -68,7 +68,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .switch[aria-checked="true"] .knob{transform:translateX(30px)}
 .switch[aria-checked="true"] .knob .k-sun{opacity:0;transform:rotate(90deg)}
 .switch[aria-checked="true"] .knob .k-moon{opacity:1;transform:rotate(0)}
-body,header.top,.plan,form,input,textarea,select,#services,#process{transition:background-color .35s ease,color .35s ease,border-color .35s ease}
+body,header.top,.plan,#services,#process{transition:background-color .35s ease,color .35s ease,border-color .35s ease}
 .btn.sm{padding:9px 16px;font-size:.92rem}
 
 .ph{background:var(--soft);border-radius:var(--r);overflow:hidden;max-width:100%}
@@ -114,22 +114,12 @@ body,header.top,.plan,form,input,textarea,select,#services,#process{transition:b
 .steps p{color:var(--muted);font-size:.97rem}
 .steps .days{font-size:.88rem;color:var(--muted)}
 
-.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start}
-@media (max-width:880px){.contact{grid-template-columns:1fr}}
-.contact .intro{display:grid;gap:14px}
-.links{display:grid;gap:0;margin-top:10px}
-.links div{display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding-block:13px;flex-wrap:wrap}
-.links span:first-child{color:var(--muted);min-width:90px}
-.links span:nth-child(2){font-weight:500;flex:1;white-space:nowrap}
-@media (max-width:480px){.links div{row-gap:2px}.links span:first-child{flex-basis:100%;font-size:.9rem}}
+.tg-card{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:40px}
+.tg-text{display:grid;gap:12px;max-width:520px;min-width:0}
+.tg-actions{display:grid;gap:12px;justify-items:start}
+.tg-handle{display:flex;align-items:center;gap:12px;font-weight:500}
 .copy{background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:5px 12px;font:500 .85rem var(--f);cursor:pointer}
-form{display:grid;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px}
-label{display:grid;gap:6px;font-weight:500;font-size:.95rem}
-input,textarea,select{font:400 1rem var(--f);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;width:100%}
-textarea{min-height:110px;resize:vertical}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.form-note{font-size:.95rem;min-height:1.5em}
-.form-note.ok{color:var(--good)} .form-note.err{color:var(--warn)}
+@media (max-width:480px){.tg-card{padding:28px 22px}}
 footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:.88rem}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 footer a{color:var(--muted)}
@@ -148,7 +138,7 @@ footer a{color:var(--muted)}
     </ul>
     <div class="nav-right">
       <button class="switch" id="theme" type="button" role="switch" aria-checked="false" aria-label="Тёмная тема"><svg class="ico sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="ico moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span class="knob"><svg class="k-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="k-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></button>
-      <a class="btn sm" href="#contact">Оставить заявку</a>
+      <a class="btn sm" href="#contact">Написать</a>
     </div>
   </div>
 </header>
@@ -265,28 +255,17 @@ footer a{color:var(--muted)}
   </section>
 
   <section id="contact">
-    <div class="wrap contact">
-      <div class="intro">
-        <h2>Расскажите о проекте</h2>
-        <p class="muted">Оставьте заявку, она придёт мне в Telegram. Отвечу в течение дня.</p>
-        <div class="links">
-          <div><span>Telegram</span><span id="tg">@Velkro0</span><button class="copy" type="button" data-copy="tg">Копировать</button></div>
+    <div class="wrap">
+      <div class="tg-card">
+        <div class="tg-text">
+          <h2>Расскажите о проекте</h2>
+          <p class="muted">Напишите в Telegram, что нужно сделать. Отвечу в течение дня и назову цену.</p>
         </div>
-        <a class="btn ghost" id="tg-link" href="https://t.me/Velkro0" target="_blank" rel="noopener" style="justify-self:start;margin-top:6px">Написать в Telegram</a>
+        <div class="tg-actions">
+          <a class="btn" href="https://t.me/Velkro0" target="_blank" rel="noopener">Написать в Telegram</a>
+          <div class="tg-handle"><span id="tg">@Velkro0</span><button class="copy" type="button" data-copy="tg">Копировать</button></div>
+        </div>
       </div>
-      <form id="lead" novalidate>
-        <label for="f-name">Имя<input id="f-name" name="name" autocomplete="name" required maxlength="80" placeholder="Айгерим"></label>
-        <label for="f-contact">Telegram или телефон<input id="f-contact" name="contact" required maxlength="80" placeholder="@aigerim или +7 7…"></label>
-        <label for="f-type">Что нужно
-          <select id="f-type" name="type">
-            <option>Лендинг</option><option selected>Сайт-визитка</option><option>Онлайн-запись</option><option>Пока не знаю</option>
-          </select>
-        </label>
-        <label for="f-msg">Коротко о бизнесе<textarea id="f-msg" name="message" maxlength="1000" placeholder="Барбершоп в Астане, нужна онлайн-запись"></textarea></label>
-        <div class="hp" aria-hidden="true"><label for="f-web">Сайт<input id="f-web" name="website" tabindex="-1" autocomplete="off"></label></div>
-        <button class="btn" type="submit" id="f-submit">Отправить заявку</button>
-        <p class="form-note" id="note" role="status" aria-live="polite"></p>
-      </form>
     </div>
   </section>
 </main>
@@ -294,9 +273,6 @@ footer a{color:var(--muted)}
 <footer><div class="wrap"><span>© <span id="y">2026</span> Диас</span><span>Фото: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></span></div></footer>
 
 <script>
-/* Адрес Cloudflare Worker, который пересылает заявки в Telegram (см. telegram-worker/README.md) */
-var FORM_ENDPOINT = 'https://partfolio.dgalym96.workers.dev';
-
 (function(){
   var root = document.documentElement, key = 'theme';
   try { var saved = localStorage.getItem(key); if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved); } catch(e){}
@@ -324,20 +300,6 @@ document.querySelectorAll('.copy').forEach(function(b){
   });
 });
 
-document.getElementById('lead').addEventListener('submit', function(e){
-  e.preventDefault();
-  var f = e.target, el = f.elements, note = document.getElementById('note'), btn = document.getElementById('f-submit');
-  var data = { name: el['name'].value.trim(), contact: el['contact'].value.trim(), type: el['type'].value, message: el['message'].value.trim(), website: el['website'].value };
-  var show = function(cls, txt){ note.className = 'form-note ' + cls; note.textContent = txt; };
-  if (!data.name || !data.contact) { show('err', 'Укажите имя и контакт, чтобы я мог ответить.'); return; }
-  if (!FORM_ENDPOINT) { show('err', 'Форма пока не подключена. Напишите в Telegram, кнопка рядом.'); return; }
-  btn.disabled = true; btn.textContent = 'Отправляю…';
-  fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-    .then(function(r){ return r.json().then(function(j){ if (!r.ok || !j.ok) throw 0; }); })
-    .then(function(){ f.reset(); show('ok', 'Заявка отправлена. Отвечу в течение дня.'); })
-    .catch(function(){ show('err', 'Не получилось отправить. Напишите в Telegram.'); })
-    .finally(function(){ btn.disabled = false; btn.textContent = 'Отправить заявку'; });
-});
 </script>
 </body>
 </html>
